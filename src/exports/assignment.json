@@ -1,0 +1,43 @@
+{
+ "mssv": "2A202603178",
+ "ten": "NguyenCaoNgocDuc",
+ "pool_version": "d04-k5-v2",
+ "cvat_user": "ducncn",
+ "project": "d04-keypoint",
+ "persons": [
+  "000000194027.jpg",
+  "000000211458.jpg",
+  "000000336477.jpg",
+  "000000525227.jpg",
+  "000000564304.jpg",
+  "000000030960.jpg",
+  "000000056651.jpg",
+  "000000521817.jpg",
+  "000000307757.jpg",
+  "000000480582.jpg",
+  "000000269462.jpg",
+  "000000522889.jpg"
+ ],
+ "faces": [
+  "face_204787.jpg",
+  "face_380639.jpg",
+  "face_559185.jpg",
+  "face_137371.jpg",
+  "face_223746.jpg",
+  "face_380754.jpg",
+  "face_296767.jpg",
+  "face_490361.jpg"
+ ],
+ "tasks": {
+  "persons": {
+   "task_id": 18,
+   "job_id": 17,
+   "task_name": "persons-NguyenCaoNgocDuc"
+  },
+  "faces": {
+   "task_id": 19,
+   "job_id": 18,
+   "task_name": "faces-NguyenCaoNgocDuc"
+  }
+ }
+}
