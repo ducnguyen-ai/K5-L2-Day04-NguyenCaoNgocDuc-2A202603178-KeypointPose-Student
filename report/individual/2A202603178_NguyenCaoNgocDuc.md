@@ -6,7 +6,7 @@ Dữ liệu: 12 ảnh người COCO val2017 (Lin et al., 2014) và 8 ảnh chân
 
 - Họ tên: Nguyễn Cao Ngọc Đức
 - MSSV: 2A202603178
-- Email: không cung cấp
+- Email: [26ai.ducncn@vinuni.edu.vn](mailto:26ai.ducncn@vinuni.edu.vn)
 - Link repository: https://github.com/ducnguyen-ai/K5-L2-Day04-NguyenCaoNgocDuc-2A202603178-KeypointPose-Student
 - Phiên bản CVAT (Help → About): 2.74.1
 - Máy: Windows · RAM 16 GB · GPU NVIDIA GeForce RTX 4060 Laptop 8 GB · CVAT local qua Docker, cổng 8081
