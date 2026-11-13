@@ -152,7 +152,50 @@ Phần rút kinh nghiệm được đề xuất từ các ca và bản xuất đ
 
 ## Bonus
 
-B1 và B2 chưa thực hiện; không có file xuất bonus. Không ghi nhận điểm bonus hoặc kết quả so sánh B3 khi chưa hoàn thành các bước tương ứng.
+Học viên xác nhận đã kiểm tra, chỉnh sửa và Save cả hai job bonus. Hai job đã chuyển sang `completed`; ZIP xuất theo định dạng COCO Keypoints 1.0 và không kèm ảnh gốc.
+
+### B1 — 3 ảnh người khó thêm
+
+- File: `src/exports/NguyenCaoNgocDuc_bonus_persons.zip`.
+- Kết quả: 3 ảnh, 8 skeleton, mỗi annotation đủ 51 số trong `keypoints`.
+
+| Ảnh | Số skeleton | Số người dưới 60 px không gán | Nội dung cần kiểm tra ở ca khó |
+|---|---:|---|---|
+| `000000005294.jpg` | 3 | Không ghi riêng | Người ngồi đọc báo bị báo che thân và tay; cần phân biệt khớp nhìn thấy với khớp không ước lượng chắc. |
+| `000000065350.jpg` | 3 | Không ghi riêng | Người chơi ván có tư thế co người và người bị cắt ở mép ảnh; cần rà riêng từng instance và cờ ngoài ảnh. |
+| `000000517702.jpg` | 2 | Không ghi riêng | Hai người dưới ô; phần đầu bị che, cần kiểm tra hướng trái/phải và khả năng ước lượng từng điểm. |
+
+Cảnh báo còn lại: `000000065350.jpg`, annotation #1 có các điểm trải cao khoảng 51 px. Ngưỡng này tính từ điểm/bbox đã xuất, không tự chứng minh chiều cao toàn bộ người là dưới 60 px khi người bị che hoặc cắt khung. Giữ nguyên nhãn theo bản học viên đã kiểm tra và Save; không sửa hoặc xóa skeleton chỉ để làm mất cảnh báo. Quyết định giữ nhãn vẫn cần đối chiếu với quy tắc chiều cao người trong lab.
+
+### B2 — 5 ảnh khuôn mặt đen trắng
+
+- File: `src/exports/NguyenCaoNgocDuc_bonus_faces.zip`.
+- Kết quả: 5 ảnh, 5 skeleton, mỗi annotation đủ 39 số; mỗi ảnh có đúng 1 skeleton mặt.
+- Bộ được chia gồm ảnh đen trắng. Không có kết quả thử nghiệm ảnh hồng ngoại để báo cáo.
+- Phân tích: ảnh không màu làm mất dấu hiệu màu da và màu môi; mép mí mắt, khóe mắt và đường môi phải được xác định qua độ sáng, hình dạng và tương phản. Ảnh cũ có hạt hoặc tương phản thấp; râu và gọng kính cũng có thể che biên cần đặt điểm.
+- Với kính râm trên ảnh hồng ngoại, không mặc định tất cả điểm mắt là `v=1`. Nếu mắt nhìn thấy rõ xuyên qua kính ở ảnh thực tế thì `v=2`; nếu bị che nhưng ước lượng chắc thì `v=1`; nếu không xác định được thì `v=0`.
+
+### Kết quả tự kiểm bonus
+
+Lệnh kiểm tra:
+
+```bash
+python src/check_submission.py --persons src/exports/NguyenCaoNgocDuc_bonus_persons.zip --faces src/exports/NguyenCaoNgocDuc_bonus_faces.zip --expected-person-images 3 --expected-face-images 5
+```
+
+```text
+Persons: 3 ảnh, 8 skeleton, 51 số/annotation.
+Skeleton theo ảnh: 000000005294=3, 000000065350=3, 000000517702=2.
+Visibility: v=2: 60; v=1: 0; v=0: 76.
+Faces: 5 ảnh, 5 skeleton, 39 số/annotation.
+Visibility: v=2: 59; v=1: 6; v=0: 0.
+Số lỗi: 0. Số cảnh báo: 1.
+Kết quả: ĐẠT (đọc lại cảnh báo).
+```
+
+Tên task và các khóa `persons-extra`, `faces-extra` trong assignment là quy ước do script lớp sinh. Tên file nộp dùng `bonus` đúng hướng dẫn, không sửa assignment bằng tay để đổi khóa.
+
+B3 chưa thực hiện theo quy trình so sánh demo được chỉ định; không ghi nhận kết quả B3.
 
 ## 9. Tài liệu tham khảo và công cụ AI đã dùng
 
